@@ -40,7 +40,15 @@ class Admin_auth_controller extends CI_Controller {
     }
 
     public function logout() {
-        $this->session->sess_destroy();
-        redirect('admin/login');
-    }
+    $this->session->sess_destroy();
+    
+    $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Sukses!</strong> Anda Berhasil Logout!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>');
+    
+    redirect('admin/login');
+}
 }
